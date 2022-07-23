@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'GotFont';
+  src: 
+    url('/assets/fonts/GotFont.woff2') format('woff2'),
+    url('/assets/fonts/GotFont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: 'GotFont', sans-serif;
+  color: #FAFAFA;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  color: #FAFAFA;
+}
+
+body {
+  background-color: #0F1012;
+}
+
+html:root::-webkit-scrollbar {
+  width: 4px;
+}
+
+html:root::-webkit-scrollbar-thumb {
+  background-color: #202224;
+  border-radius: 4px;
+}
+
+html:root::-webkit-scrollbar-track {
+  background: #000;
+}
