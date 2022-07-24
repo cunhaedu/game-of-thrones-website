@@ -12,7 +12,7 @@ import {
   Tree as ReligionIcon
 } from "phosphor-react";
 
-export default function Menu() {
+export function Menu() {
   const [open, setOpen] = useState(false);
 
   return (

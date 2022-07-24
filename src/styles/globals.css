@@ -36,7 +36,7 @@ p, span, a {
 }
 
 body {
-  background-color: #141719;
+  background-color: #000;
 }
 
 html:root::-webkit-scrollbar {
@@ -50,4 +50,12 @@ html:root::-webkit-scrollbar-thumb {
 
 html:root::-webkit-scrollbar-track {
   background: #000;
+}
+
+.swiper-button-prev {
+  color: #000 !important;
+}
+
+.swiper-button-next {
+  color: #000 !important;
 }

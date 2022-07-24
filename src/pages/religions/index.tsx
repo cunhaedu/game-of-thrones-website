@@ -1,29 +1,9 @@
 import Head from 'next/head';
-import Menu from '../../components/Menu';
 
-const religions = [
-  {
-    id: 1,
-    name: 'Old Gods of the Forest',
-    href: '#',
-    imageSrc: 'https://i.pinimg.com/originals/8c/9e/dc/8c9edcaab206fcb09244aba0f68c7ba1.png',
-    imageAlt: "Old Gods of the Forest",
-  },
-  {
-    id: 2,
-    name: 'Faith of the Seven',
-    href: '#',
-    imageSrc: 'https://imgix.bustle.com/uploads/image/2019/4/12/2a6d1b57-6266-4834-9765-027b18d2fa5c-faithofseven.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg',
-    imageAlt: "Faith of the Seven",
-  },
-  {
-    id: 3,
-    name: 'Drowned God',
-    href: '#',
-    imageSrc: 'https://i.ytimg.com/vi/kOAZYjTJ1Ms/maxresdefault.jpg',
-    imageAlt: "Drowned God",
-  },
-]
+import { ImageSlider } from '../../components/ImageSlider';
+import { Menu } from '../../components/Menu';
+
+import { religions } from '../../mocks/religions.mock';
 
 export default function Religions() {
   return (
@@ -50,7 +30,6 @@ export default function Religions() {
             <span>-- Salladhor Saan</span>
           </h2>
 
-
           <div>
             <p className='text-primary text-xl'>
               A multitude of religions are followed by different cultures and
@@ -71,32 +50,17 @@ export default function Religions() {
           </div>
         </section>
 
-        <section className='bg-dark'>
+        <section className='bg-dark/20'>
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <h2 className="text-center md:text-left text-2xl font-extrabold tracking-tight text-primary">
               Religions in Westeros
             </h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-              {religions.map(religion => (
-                <div key={religion.id} className="group relative">
-                  <div className="w-full min-h-72 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 lg:aspect-none">
-                    <img
-                      src={religion.imageSrc}
-                      alt={religion.imageAlt}
-                      className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                    />
-                  </div>
-
-                  <h3 className="text-lg text-center mt-4 text-primary">
-                    <a href={religion.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {religion.name}
-                    </a>
-                  </h3>
-                </div>
-              ))}
-            </div>
+            <ImageSlider
+              data={religions.map(religion => ({
+                ...religion, imageUrl: religion.logo
+              }))}
+            />
           </div>
         </section>
       </main>

@@ -13,7 +13,7 @@ module.exports = {
       },
       colors: {
         black: '#0F1012',
-        dark: '#0E1014',
+        dark: '#141719',
       },
       backgroundImage: {
         'houses': "url('/assets/images/houses.jpg')",
