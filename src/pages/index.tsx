@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Footer from './components/Footer';
-import Menu from './components/Menu';
+import Footer from '../components/Footer';
+import Menu from '../components/Menu';
 
 export default function Home() {
   return (
@@ -11,17 +11,13 @@ export default function Home() {
 
       <Menu />
 
-      <header className="relative flex items-center justify-center w-full h-screen mb-12 overflow-hidden">
+      <header className="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
         <div
           className="relative z-20 p-5"
         >
-          {/* <h1 className='text-5xl text-gray-300 text-center tracking-widest leading-tight'>
-            Game of Thrones
-          </h1> */}
-
           <img src="/assets/images/logo.svg" alt="Logo" className='w-96' />
 
-          <span className='text-xl text-white block text-center w-full pt-2'>
+          <span className='text-xl text-primary font-semibold block text-center pt-2'>
             Welcome to the game
           </span>
         </div>
@@ -40,8 +36,10 @@ export default function Home() {
         </video>
       </header>
 
-      <section className='h-10'>
-        <h3></h3>
+      <section>
+        <h3 className='font-[GotFont] text-center my-10 text-transparent text-5xl text-stroke-gray tracking-wide'>
+          Winter is Coming
+        </h3>
       </section>
 
       <Footer />

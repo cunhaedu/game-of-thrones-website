@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-stroke-gray {
+    -webkit-text-stroke: 1px #23262b;
+  }
+}
+
 @font-face {
   font-family: 'GotFont';
-  src: 
+  src:
     url('/assets/fonts/GotFont.woff2') format('woff2'),
     url('/assets/fonts/GotFont.woff') format('woff');
   font-weight: normal;
@@ -13,7 +19,6 @@
 
 h1 {
   font-family: 'GotFont', sans-serif;
-  color: #FAFAFA;
 }
 
 h2,
@@ -21,13 +26,17 @@ h3,
 h4,
 h5,
 h6 {
+  font-weight: 600;
+  font-family: 'Cormorant SC', sans-serif;
+}
+
+p, span, a {
+  font-family: 'Cormorant SC', sans-serif;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-  color: #FAFAFA;
 }
 
 body {
-  background-color: #0F1012;
+  background-color: #141719;
 }
 
 html:root::-webkit-scrollbar {
