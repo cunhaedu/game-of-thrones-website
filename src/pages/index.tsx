@@ -18,7 +18,7 @@ export default function Home() {
         >
           <img src="/assets/images/logo.svg" alt="Logo" className='w-96' />
 
-          <span className='text-xl text-primary font-semibold block text-center pt-2'>
+          <span className='text-sm text-primary font-primary tracking-wider font-semibold block text-center pt-2'>
             Welcome to the game
           </span>
         </div>
@@ -37,26 +37,26 @@ export default function Home() {
         </video>
       </header>
 
-      <section className='m-10 md:m-20 2xl:mx-80 2xl:my-40 flex flex-col gap-14'>
-        <h1 className='text-2xl md:text-4xl tracking-wide text-gray-400'>
+      <section className='m-5 md:m-20 2xl:mx-80 2xl:my-40 flex flex-col gap-14'>
+        <h1 className='text-xl md:text-4xl tracking-wide text-white'>
           Welcome
         </h1>
 
-        <h2 className='lg:max-w-screen-sm text-primary text-xl'>
+        <h2 className='lg:max-w-screen-sm text-primary md:text-lg'>
           "When you play the game of thrones, you win or you die."
           <br />
-          <span>-- Cersei Lannister</span>
+          <span>- Cersei Lannister</span>
         </h2>
 
         <div>
-          <p className='text-primary text-xl'>
+          <p className='text-primary md:text-lg'>
             Game of Thrones is an American fantasy drama television series
             produced by the {' '}
             <a
               href="https://www.hbo.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className='underline underline-offset-2 decoration-dotted hover:text-gray-400'
+              className='underline underline-offset-2 decoration-dotted hover:text-white'
             >
               HBO
             </a>
@@ -69,7 +69,7 @@ export default function Home() {
 
           <br />
 
-          <p className='text-primary text-xl'>
+          <p className='text-primary md:text-lg'>
             This website aims to resolve an uncomfortable feeling I got when
             looking for some serie's information on internet and ended up find
             myself in a wiki that contain, literally, an ocean of information.
@@ -78,14 +78,14 @@ export default function Home() {
             information only draw my attention away from my original purpose.
           </p>
 
-          <p className='text-primary text-xl'>
+          <p className='text-primary md:text-lg'>
             So, if you love this serie but got the same problem, this website is
             for you, it gather the information I was talking about from some
             wikis on internet, summarize it and, finally, present it in a
             beautiful and organized way.
           </p>
 
-          <p className='text-primary text-xl'>
+          <p className='text-primary md:text-lg'>
             All the information in this website is provided from the following
             wikis:
           </p>
@@ -96,7 +96,7 @@ export default function Home() {
                 href="https://gameofthrones.fandom.com/wiki/Game_of_Thrones_Wiki"
                 target="_blank"
                 rel="noopener noreferrer"
-                className='underline underline-offset-2 decoration-dotted text-xl text-primary hover:text-gray-400'
+                className='underline underline-offset-2 decoration-dotted md:text-lg text-primary hover:text-primary-hover'
               >
                 Game of Thrones wiki
               </a>
@@ -107,7 +107,7 @@ export default function Home() {
                 href="https://wiki.geloefogo.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className='underline underline-offset-2 decoration-dotted text-xl text-primary hover:text-gray-400'
+                className='underline underline-offset-2 decoration-dotted md:text-lg text-primary hover:text-primary-hover'
               >
                 Gelo e Fogo wiki (in Brazil Portuguese)
               </a>

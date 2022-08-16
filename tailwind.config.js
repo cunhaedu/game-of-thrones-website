@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
@@ -8,8 +10,8 @@ module.exports = {
   theme: {
     extend: {
       textColor: {
-        primary: '#6A7071',
-        'hover': '#222B35',
+        primary: '#888',
+        'primary-hover': '#FFF',
       },
       colors: {
         black: '#0F1012',
@@ -17,6 +19,9 @@ module.exports = {
       },
       backgroundImage: {
         'houses': "url('/assets/images/houses.jpg')",
+      },
+      fontFamily: {
+        'primary': ['GotFont', ...defaultTheme.fontFamily.sans],
       },
     },
     textBorder: {

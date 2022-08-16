@@ -94,7 +94,7 @@ export function Menu() {
 
                           <Link href="/people">
                             <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <PersonIcon className='w-6 h-6' /> People
+                              <PersonIcon className='w-6 h-6' /> Cast
                             </a>
                           </Link>
 

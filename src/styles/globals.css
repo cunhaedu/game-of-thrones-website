@@ -26,13 +26,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
-  font-family: 'Cormorant SC', sans-serif;
+  font-family: 'Cinzel', sans-serif;
 }
 
 p, span, a {
-  font-family: 'Cormorant SC', sans-serif;
-  font-weight: 500;
+  font-family: 'Cinzel', sans-serif;
 }
 
 body {

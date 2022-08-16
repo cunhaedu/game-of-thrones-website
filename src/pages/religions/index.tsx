@@ -17,12 +17,12 @@ export default function Religions() {
       <main>
         <div className='bg-houses bg-center bg-cover bg-no-repeat min-w-full h-[30vh] md:h-[30vh] lg:h-[60vh]'></div>
 
-        <section className='m-10 md:m-20 2xl:mx-80 2xl:my-40 flex flex-col gap-14'>
-          <h1 className='text-2xl md:text-4xl tracking-wide text-gray-400'>
+        <section className='m-5 mt-10 md:mt-20 md:m-20 2xl:mx-80 2xl:my-40 flex flex-col gap-14'>
+          <h1 className='text-2xl md:text-4xl tracking-wide text-white'>
             Religions
           </h1>
 
-          <h2 className='lg:max-w-screen-sm text-primary text-xl'>
+          <h2 className='lg:max-w-screen-sm text-primary md:text-lg'>
             "I've been all over the world, my boy, and everywhere I go people
             tell me about "the true God".
             They all think they've found the right one!"
@@ -31,7 +31,7 @@ export default function Religions() {
           </h2>
 
           <div>
-            <p className='text-primary text-xl'>
+            <p className='text-primary md:text-lg'>
               A multitude of religions are followed by different cultures and
               peoples throughout the known world. These can range from widespread
               belief systems followed by great numbers of people, to more localized
@@ -40,7 +40,7 @@ export default function Religions() {
 
             <br />
 
-            <p className='text-primary text-xl'>
+            <p className='text-primary md:text-lg'>
               Individual religious devotion in all societies is, of course, on a
               spectrum, from devout adherents to those that just go through some
               of the motions by rote as a cultural norm. Some people are also
