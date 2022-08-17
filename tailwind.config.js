@@ -17,6 +17,12 @@ module.exports = {
         black: '#0F1012',
         dark: '#141719',
       },
+      backgroundColor: {
+        primary: '#888',
+      },
+      borderColor: {
+        primary: '#888',
+      },
       backgroundImage: {
         'houses': "url('/assets/images/houses.jpg')",
       },

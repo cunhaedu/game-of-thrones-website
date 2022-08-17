@@ -14,13 +14,15 @@ export default function Home() {
 
       <header className="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
         <div
-          className="relative z-20 p-5"
+          className="relative z-20 p-5 bg-gradient-to-t from-black/70 min-w-full min-h-full flex align-middle justify-center"
         >
-          <img src="/assets/images/logo.svg" alt="Logo" className='w-96' />
+          <div className='self-center'>
+            <img src="/assets/images/logo.svg" alt="Logo" className='w-96' />
 
-          <span className='text-sm text-primary font-primary tracking-wider font-semibold block text-center pt-2'>
-            Welcome to the game
-          </span>
+            <span className='text-sm text-primary tracking-wider font-semibold block text-center pt-2'>
+              Welcome to the game
+            </span>
+          </div>
         </div>
 
         <video
