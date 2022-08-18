@@ -29,6 +29,9 @@ module.exports = {
       fontFamily: {
         'primary': ['GotFont', ...defaultTheme.fontFamily.sans],
       },
+      animation: {
+        'bounce-slow': 'bounce 3s infinite'
+      }
     },
     textBorder: {
       'white': '-webkit-text-stroke: 1px red;'

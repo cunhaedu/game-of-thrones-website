@@ -2,6 +2,10 @@ import { gql } from '@apollo/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { client } from '../../lib/apollo';
 import { ParsedUrlQuery } from 'querystring';
+import Head from 'next/head';
+import { Menu } from '../../components/Menu';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CaretDoubleDown } from 'phosphor-react';
 
 type Params = ParsedUrlQuery & {
   slug: string;
@@ -12,6 +16,9 @@ type EpisodeProps = {
   slug: string;
   number: number;
   cover: string;
+  season: {
+    seasonNumber: number;
+  }
 }
 
 type GetEpisodeResponse = {
@@ -34,13 +41,60 @@ const GET_EPISODE_QUERY = gql`
       number,
       description,
       cover,
+      season {
+        seasonNumber
+      }
     }
   }
 `
 
 export default function Episode({ episode }: GetEpisodeResponse) {
   return (
-    <h1 className='text-white'>{episode.title}</h1>
+    <div>
+      <Head>
+        <title>Início | Game Of Thrones</title>
+      </Head>
+
+      <Menu />
+
+      <main>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            layoutId={episode.slug}
+            initial={{
+              y: 0,
+              x: 0,
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              x: 0,
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{ duration: 2 }}
+            style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('${episode.cover}')`}}
+            className="bg-ministries bg-center bg-cover bg-no-repeat md:bg-fixed"
+          >
+            <div className='min-h-screen flex flex-col align-middle justify-center text-center text-white' >
+              <span className='font-semibold text-sm text-gray-300'>
+                SEASON {String(episode.season.seasonNumber).padStart(2, '0')} / EPISODE {String(episode.number).padStart(2, '0')}
+              </span>
+              <h1 className='font-bold text-3xl my-3 leading-relaxed tracking-widest md:text-5xl md:leading-relaxed md:tracking-widest'>
+                {episode.title}
+              </h1>
+              <span className='font-semibold text-sm text-gray-300'>
+                FULL SYNOPSIS
+              </span>
+
+              {/* <CaretDoubleDown className='animate-bounce-slow self-center' size={32} /> */}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </main>
+    </div>
   )
 }
 

@@ -17,9 +17,9 @@ export default function Home() {
           className="relative z-20 p-5 bg-gradient-to-t from-black/70 min-w-full min-h-full flex align-middle justify-center"
         >
           <div className='self-center'>
-            <img src="/assets/images/logo.svg" alt="Logo" className='w-96' />
+            <img src="/assets/images/logo-white.svg" alt="Logo" className='w-96' />
 
-            <span className='text-sm text-primary tracking-wider font-semibold block text-center pt-2'>
+            <span className='text-sm text-white tracking-wider font-semibold block text-center pt-2'>
               Welcome to the game
             </span>
           </div>

@@ -1,26 +1,13 @@
-import Link from 'next/link';
-import { gql } from '@apollo/client';
-import { GetStaticProps } from 'next';
 import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Menu } from '../../components/Menu';
+import { GetStaticProps } from 'next';
+import { gql } from '@apollo/client';
+import Link from 'next/link';
+
 import { romanize } from '../../helpers/romanize.helper';
+import { Menu } from '../../components/Menu';
 import { client } from '../../lib/apollo';
-
-import { Transition } from 'react-transition-group';
-
-const duration = 1000
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0
-}
-
-const transitionStyles: any = {
-  entering: { opacity: 1 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 }
-}
 
 type Episode = {
   title: string;
@@ -62,13 +49,9 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
   const [hasPreviousSeason, setHasPreviousSeason] = useState(false);
   const [hasNextSeason, setHasNextSeason] = useState(true);
 
-  const [currentUrl, setCurrentUrl] = useState<string>('');
-
   useEffect(() => {
     setSelectedSeason(seasons[0]);
     setSelectedEpisode(seasons[0].episodes[0]);
-
-    setCurrentUrl(seasons[0].episodes[0].cover);
 
     changeNextAndPreviousSeasonInformation(0);
   }, []);
@@ -78,8 +61,6 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
     setSelectedSeason(seasons[selectedSeasonIndex]);
     setSelectedEpisode(seasons[selectedSeasonIndex].episodes[0]);
 
-    setCurrentUrl(seasons[selectedSeasonIndex].episodes[0].cover);
-
     changeNextAndPreviousSeasonInformation(seasons.indexOf(seasons[selectedSeasonIndex]));
   }
 
@@ -87,8 +68,6 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
     const selectedSeasonIndex = seasons.indexOf(selectedSeason) + 1;
     setSelectedSeason(seasons[selectedSeasonIndex]);
     setSelectedEpisode(seasons[selectedSeasonIndex].episodes[0]);
-
-    setCurrentUrl(seasons[selectedSeasonIndex].episodes[0].cover);
 
     changeNextAndPreviousSeasonInformation(seasons.indexOf(seasons[selectedSeasonIndex]));
   }
@@ -104,21 +83,24 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
       <Menu />
 
       <main className='min-h-screen'>
-        <div className='min-h-screen'>
+        <div className='min-h-screen max-h-screen overflow-y-hidden max-w-screen overflow-x-hidden'>
 
-        <Transition
-          in={selectedEpisode.cover === currentUrl}
-          onExited={() => {
-            setCurrentUrl(selectedEpisode.cover)
-          }}
-          timeout={duration}
-        >
-          {(state) => (
-        <div
-          style={{  ...defaultStyle, ...transitionStyles[state], backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('${selectedEpisode.cover}')` }}
-          className="bg-center bg-cover bg-no-repeat z-0 absolute min-w-full min-h-full"
-        ></div>
-          )}</Transition>
+        <AnimatePresence exitBeforeEnter mode='sync' initial={false}>
+          <motion.div
+            className="z-0 absolute min-w-full min-h-full max-h-full"
+            key={selectedEpisode.slug}
+            initial={{ y: -30, opacity: 0.1 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 30, opacity: 0.1 }}
+            transition={{ ease: "easeOut", duration: 0.6 }}
+          >
+            <motion.img
+              src={selectedEpisode.cover}
+              alt={selectedEpisode.title}
+              className='object-cover object-center opacity-70 w-full min-h-screen max-h-screen'
+            />
+          </motion.div>
+        </AnimatePresence>
 
           <div className='z-10 min-h-screen flex flex-col align-middle justify-center text-center text-white relative' >
             <section>
@@ -169,14 +151,14 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
               </ul>
             </section>
 
-            <div className='pt-14'>
               <Link href={`/episodes/${selectedEpisode.slug}`}>
-                <a className='py-3 px-2 text-sm border rounded-sm transition-colors ease-in border-primary self-center hover:grayscale'>
+                <motion.a
+                  key={selectedEpisode.slug}
+                  className='py-3 px-2 mt-14 cursor-pointer text-sm border rounded-sm border-primary self-center transition-transform ease-in-out duration-500 hover:scale-105'
+                >
                   EXPLORE EPISODE
-                </a>
+                </motion.a>
               </Link>
-            </div>
-
           </div>
         </div>
       </main>
