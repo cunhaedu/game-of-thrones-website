@@ -57,3 +57,15 @@ html:root::-webkit-scrollbar-track {
 .swiper-button-next {
   color: #000 !important;
 }
+
+.swiper {
+  padding-bottom: 40px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FFF !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #FFF !important;
+}

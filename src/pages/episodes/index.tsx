@@ -89,10 +89,10 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
           <motion.div
             className="z-0 absolute min-w-full min-h-full max-h-full"
             key={selectedEpisode.slug}
-            initial={{ y: -30, opacity: 0.1 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 30, opacity: 0.1 }}
-            transition={{ ease: "easeOut", duration: 0.6 }}
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             <motion.img
               src={selectedEpisode.cover}

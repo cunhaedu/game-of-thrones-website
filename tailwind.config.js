@@ -24,7 +24,7 @@ module.exports = {
         primary: '#888',
       },
       backgroundImage: {
-        'houses': "url('/assets/images/houses.jpg')",
+        'houses': "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url('/assets/images/houses.jpg')",
       },
       fontFamily: {
         'primary': ['GotFont', ...defaultTheme.fontFamily.sans],
