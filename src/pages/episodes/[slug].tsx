@@ -1,15 +1,12 @@
-import { gql } from '@apollo/client';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { client } from '../../lib/apollo';
-import { ParsedUrlQuery } from 'querystring';
-import Head from 'next/head';
-import { Menu } from '../../components/Menu';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CaretCircleDown, CaretDoubleDown, CaretDown } from 'phosphor-react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { CaretCircleDown } from 'phosphor-react';
+import { gql } from '@apollo/client';
+import Head from 'next/head';
 
-type Params = ParsedUrlQuery & {
-  slug: string;
-}
+import { Params } from '../../interfaces/Params';
+import { Menu } from '../../components/Menu';
+import { client } from '../../lib/apollo';
 
 type EpisodeProps = {
   title: string;

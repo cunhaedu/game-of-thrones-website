@@ -1,10 +1,12 @@
-import Head from 'next/head';
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Footer } from '../../components/Footer';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel, Pagination } from 'swiper';
+import { motion } from 'framer-motion';
+import Head from 'next/head';
+import Link from 'next/link';
 
-import { Menu } from '../../components/Menu';
 import { houses } from '../../mocks/houses.mock copy';
+import { Menu } from '../../components/Menu';
 
 export default function Houses() {
   return (
@@ -30,15 +32,18 @@ export default function Houses() {
               Houses
             </h1>
 
-            <div className='max-w-full 2xl::max-w-screen-2xl 2xl:self-center overflow-x-hidden my-10'>
+            <div className='max-w-full 2xl:max-w-screen-2xl 2xl:self-center overflow-x-hidden my-10'>
               <Swiper
-                modules={[Pagination]}
+                modules={[Pagination, Mousewheel]}
                 pagination={{
                   clickable: true,
                 }}
+                direction={'horizontal'}
+                mousewheel={true}
                 breakpoints={{
                   499: {
                     slidesPerView: 1,
+                    spaceBetween: 5,
                   },
                   500: {
                     slidesPerView: 2,
@@ -56,13 +61,30 @@ export default function Houses() {
               >
                 {houses.map(house => (
                   <SwiperSlide key={house.slug}>
-                    <div
-                      style={{backgroundImage: `url('${house.logo}')`}}
-                      className={`bg-no-repeat bg-cover bg-bottom md:bg-center mx-2 rounded-3xl lg:rounded-md cursor-pointer duration-200`}>
-                      <div className='h-80 w-full flex flex-col'>
-                        {/* <span className='mt-64 text-white font-bold pl-5'>{house.title}</span> */}
-                      </div>
-                    </div>
+                    <Link href={`houses/${house.slug}`} >
+                      <a>
+                        {
+                        /**  TODO: Check why it's give 403 error when using Google Drive url
+                         *  <div className='h-80 w-[90%]'>
+                              <Image
+                              src={house.pngLogo}
+                              alt={house.title}
+                              layout='fill'
+                              objectFit="cover"
+                              className='object-bottom m-2 lg:object-center mx-2 rounded-3xl lg:rounded-md cursor-pointer duration-200 self-center'
+                              />
+                            </div>
+                        */}
+                        <motion.div
+                          layoutId={house.slug}
+                          initial={{ scale: 1 }}
+                          animate={{ scale: 1 }}
+                          whileHover={{ scale: 1.02 }}
+                          style={{backgroundImage: `url('${house.logo}')`}}
+                          className='h-80 bg-no-repeat bg-cover bg-bottom md:bg-center mx-2 duration-200 rounded-3xl lg:rounded-md'
+                        ></motion.div>
+                      </a>
+                    </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>
