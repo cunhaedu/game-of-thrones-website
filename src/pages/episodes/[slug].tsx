@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { CaretCircleDown } from 'phosphor-react';
+import { motion } from 'framer-motion';
 import { gql } from '@apollo/client';
 import Head from 'next/head';
 
@@ -55,7 +55,6 @@ export default function Episode({ episode }: GetEpisodeResponse) {
       <Menu />
 
       <main>
-        <AnimatePresence exitBeforeEnter>
           <motion.div
             layoutId={episode.slug}
             initial={{ y: 0, x: 0, opacity: 0 }}
@@ -89,7 +88,6 @@ export default function Episode({ episode }: GetEpisodeResponse) {
               </div>
             </div>
           </motion.div>
-        </AnimatePresence>
       </main>
     </div>
   )
@@ -128,6 +126,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       episode: data.episode,
-    }
+    },
+    revalidate: 60 * 60 * 8,
   };
 }

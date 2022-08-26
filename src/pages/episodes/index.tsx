@@ -1,6 +1,6 @@
 import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { GetStaticProps } from 'next';
 import { gql } from '@apollo/client';
 import Link from 'next/link';
@@ -84,8 +84,6 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
 
       <main className='min-h-screen'>
         <div className='min-h-screen max-h-screen overflow-y-hidden max-w-screen overflow-x-hidden'>
-
-        <AnimatePresence exitBeforeEnter mode='sync' initial={false}>
           <motion.div
             className="z-0 absolute min-w-full min-h-full max-h-full"
             key={selectedEpisode.slug}
@@ -100,7 +98,6 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
               className='object-cover object-center opacity-70 w-full min-h-screen max-h-screen'
             />
           </motion.div>
-        </AnimatePresence>
 
           <div className='z-10 min-h-screen flex flex-col align-middle justify-center text-center text-white relative' >
             <section>
