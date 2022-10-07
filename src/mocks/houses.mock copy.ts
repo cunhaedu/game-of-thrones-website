@@ -133,8 +133,8 @@ export const houses = [
     slug: 'mormont',
     title: 'Mormont',
     link: '/houses/mormont',
-    logo: 'https://drive.google.com/uc?export=view&id=1Ao6DReJD5px7zaye6XJ3z5u0IyDj6JUM',
-    pngLogo: 'https://drive.google.com/uc?export=view&id=13V6NakcTBpv_fFQslKNaMMgYpoT3W1_G',
+    logo: 'https://drive.google.com/uc?export=view&id=1DKLmmIxwbKUYNoLnfX9n9Dz7E7k_Yyzh',
+    pngLogo: 'https://drive.google.com/uc?export=view&id=1Q20atK9HnW3km8W2fZbCGVnvci12OS8Y',
     words: 'Ours is the Fury',
     phrase: "We are not a large House, but we're a proud one. And every man from Bear Island fights with the strength of ten mainlanders!",
     phraseAuthor: {

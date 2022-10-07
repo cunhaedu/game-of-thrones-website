@@ -1,14 +1,35 @@
-import { Footer } from '../../components/Footer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Pagination } from 'swiper';
 import { motion } from 'framer-motion';
+import Image from 'next/future/image';
+import { GetStaticProps } from 'next';
+import { gql } from '@apollo/client';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { houses } from '../../mocks/houses.mock copy';
+import { Footer } from '../../components/Footer';
 import { Menu } from '../../components/Menu';
+import { client } from '../../lib/apollo';
 
-export default function Houses() {
+type GetHousesResponse = {
+  houses: Array<{
+    slug: string;
+    logo: string;
+    name: string;
+  }>
+}
+
+const GET_HOUSES_QUERY = gql`
+  query Houses {
+    houses {
+      name
+      slug
+      logo
+    }
+  }
+`
+
+export default function Houses({ houses }: GetHousesResponse) {
   return (
     <div>
       <Head>
@@ -64,25 +85,22 @@ export default function Houses() {
                     <Link href={`houses/${house.slug}`} >
                       <a>
                         {
-                        /**  TODO: Check why it's give 403 error when using Google Drive url
-                         *  <div className='h-80 w-[90%]'>
-                              <Image
-                              src={house.pngLogo}
-                              alt={house.title}
-                              layout='fill'
-                              objectFit="cover"
+                          <motion.div
+                            // layoutId={house.slug}
+                            initial={{ scale: 1 }}
+                            animate={{ scale: 1 }}
+                            whileHover={{ scale: 1.02 }}
+                            className='h-80 flex items-center justify-center lg:block'
+                          >
+                            <Image
+                              src={house.logo}
+                              alt={house.name}
+                              width={320}
+                              height={320}
                               className='object-bottom m-2 lg:object-center mx-2 rounded-3xl lg:rounded-md cursor-pointer duration-200 self-center'
-                              />
-                            </div>
-                        */}
-                        <motion.div
-                          layoutId={house.slug}
-                          initial={{ scale: 1 }}
-                          animate={{ scale: 1 }}
-                          whileHover={{ scale: 1.02 }}
-                          style={{backgroundImage: `url('${house.logo}')`}}
-                          className='h-80 bg-no-repeat bg-cover bg-bottom md:bg-center mx-2 duration-200 rounded-3xl lg:rounded-md'
-                        ></motion.div>
+                            />
+                          </motion.div>
+                        }
                       </a>
                     </Link>
                   </SwiperSlide>
@@ -96,4 +114,24 @@ export default function Houses() {
       </main>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await client.query<GetHousesResponse>({
+    query: GET_HOUSES_QUERY,
+  });
+
+  if (!data || !data.houses) {
+    return {
+      props: {
+        houses: [],
+      }
+    }
+  }
+
+  return {
+    props: {
+      houses: data.houses,
+    }
+  };
 }
