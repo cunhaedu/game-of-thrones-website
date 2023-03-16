@@ -23,9 +23,9 @@ export default function Religions() {
           </h1>
 
           <h2 className='lg:max-w-screen-sm text-primary md:text-lg'>
-            "I've been all over the world, my boy, and everywhere I go people
-            tell me about "the true God".
-            They all think they've found the right one!"
+            &quot;I&apos;ve been all over the world, my boy, and everywhere I go people
+            tell me about &quot;the true God&quot;.
+            They all think they&apos;ve found the right one!&quot;
             <br />
             <span>-- Salladhor Saan</span>
           </h2>
@@ -44,7 +44,7 @@ export default function Religions() {
               Individual religious devotion in all societies is, of course, on a
               spectrum, from devout adherents to those that just go through some
               of the motions by rote as a cultural norm. Some people are also
-              irreligious and privately don't believe in any gods or religious
+              irreligious and privately don&apos;t believe in any gods or religious
               systems.
             </p>
           </div>

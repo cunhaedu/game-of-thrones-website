@@ -1,6 +1,8 @@
-import { Fragment, useState } from 'react';
-import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   X as CloseIcon,
   List as MenuIcon,
@@ -9,8 +11,17 @@ import {
   FlagBanner as FlagIcon,
   MapTrifold as LocationIcon,
   Books as BooksIcon,
-  Tree as ReligionIcon
-} from "phosphor-react";
+  Tree as ReligionIcon,
+} from 'phosphor-react';
+
+const menuItems = [
+  { url: '/episodes', Icon: EpisodeIcon, title: 'Episodes', isDisabled: false },
+  { url: '/houses', Icon: FlagIcon, title: 'Houses', isDisabled: false },
+  { url: '/people', Icon: PersonIcon, title: 'Cast', isDisabled: true },
+  { url: '/religions', Icon: ReligionIcon, title: 'Religions', isDisabled: true },
+  { url: '/locations', Icon: LocationIcon, title: 'Locations', isDisabled: true },
+  { url: '/histories', Icon: BooksIcon, title: 'Histories', isDisabled: true },
+]
 
 export function Menu() {
   const [open, setOpen] = useState(false);
@@ -72,52 +83,38 @@ export function Menu() {
                       <div className="px-4 sm:px-6">
                         <Dialog.Title className="mb-5">
                           <Link href="/">
-                            <a>
-                              <img src="/assets/images/logo.svg" alt="Game of thrones" className='w-48' />
-                            </a>
+                            <Image
+                              src="/assets/images/logo-gray.svg"
+                              alt="Game of thrones"
+                              width={192}
+                              height={48}
+                              className='w-48'
+                            />
                           </Link>
                         </Dialog.Title>
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                        <section className='text-primary flex flex-col gap-6'>
-                          <Link href="/episodes">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <EpisodeIcon className='w-6 h-6' /> Episodes
-                            </a>
-                          </Link>
-
-                          <Link href="/houses">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <FlagIcon className='w-6 h-6' /> Houses
-                            </a>
-                          </Link>
-
-                          <Link href="/people">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <PersonIcon className='w-6 h-6' /> Cast
-                            </a>
-                          </Link>
-
-                          <Link href="/religions">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <ReligionIcon className='w-6 h-6'/> Religions
-                            </a>
-                          </Link>
-
-                          <Link href="/locations">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <LocationIcon className='w-6 h-6' /> Locations
-                            </a>
-                          </Link>
-
-                          <Link href="/histories">
-                            <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                              <BooksIcon className='w-6 h-6' /> Histories
-                            </a>
-                          </Link>
-
-                        </section>
-                        {/* /End replace */}
+                        <ul className='text-primary flex flex-col gap-6'>
+                          <AnimatePresence exitBeforeEnter mode='wait'>
+                            {menuItems.map(item => (
+                              <motion.li
+                                key={item.title}
+                                initial={{ y: -30, opacity: 0.1 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: 30, opacity: 0.1 }}
+                                transition={{ ease: "easeInOut", duration: 0.7 }}
+                                className='list-none'
+                              >
+                                <Link
+                                  href={item.url}
+                                  className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'
+                                >
+                                  <item.Icon className='w-6 h-6' /> {item.title}
+                                </Link>
+                              </motion.li>
+                            ))}
+                          </AnimatePresence>
+                        </ul>
                       </div>
                     </div>
                   </Dialog.Panel>
@@ -128,6 +125,5 @@ export function Menu() {
         </Dialog>
       </Transition.Root>
     </div>
-
   )
 }

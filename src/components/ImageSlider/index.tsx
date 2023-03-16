@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import Image from 'next/image';
 
 interface ImageSliderData {
   imageUrl: string;
@@ -42,7 +43,7 @@ export function ImageSlider({ data, hasNavigation = true }: ImageSliderProps) {
           <SwiperSlide key={content.slug}>
             <div className="group relative w-full">
               <div className="w-full min-h-72 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 lg:aspect-none">
-                <img
+                <Image
                   src={content.imageUrl}
                   alt={content.title}
                   className="w-full h-full object-center object-cover lg:w-full lg:h-full"

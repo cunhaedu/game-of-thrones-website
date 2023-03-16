@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -17,12 +17,22 @@ module.exports = {
         black: '#0F1012',
         dark: '#141719',
       },
+      backgroundColor: {
+        primary: '#888',
+      },
+      borderColor: {
+        primary: '#888',
+      },
       backgroundImage: {
-        'houses': "url('/assets/images/houses.jpg')",
+        'houses': "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url('/assets/images/houses.jpg')",
       },
       fontFamily: {
-        'primary': ['GotFont', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-cinzel)', ...fontFamily.sans],
+        'primary': ['var(--font-cinzel)', ...fontFamily.sans],
       },
+      animation: {
+        'bounce-slow': 'bounce 3s infinite'
+      }
     },
     textBorder: {
       'white': '-webkit-text-stroke: 1px red;'
@@ -30,5 +40,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    require("tailwindcss-hyphens")
   ],
 }
