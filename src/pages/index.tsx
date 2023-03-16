@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 
 import { Footer } from '../components/Footer';
 import { Menu } from '../components/Menu';
@@ -17,9 +18,14 @@ export default function Home() {
           className="relative z-20 p-5 bg-gradient-to-t from-black/70 min-w-full min-h-full flex align-middle justify-center"
         >
           <div className='self-center'>
-            <img src="/assets/images/logo-white.svg" alt="Logo" className='w-96' />
+            <Image
+              src="/assets/images/logo-white.svg"
+              alt="Logo"
+              width={384}
+              height={96}
+            />
 
-            <span className='text-sm text-white tracking-wider font-semibold block text-center pt-2'>
+            <span className='text-sm text-white tracking-wider font-bold block text-center pt-2'>
               Welcome to the game
             </span>
           </div>
@@ -45,9 +51,9 @@ export default function Home() {
         </h1>
 
         <h2 className='lg:max-w-screen-sm text-primary md:text-lg'>
-          "When you play the game of thrones, you win or you die."
+          &quot;When you play the game of thrones, you win or you die.&quot;
           <br />
-          <span>- Cersei Lannister</span>
+          -- Cersei Lannister
         </h2>
 
         <div>
@@ -73,9 +79,9 @@ export default function Home() {
 
           <p className='text-primary md:text-lg'>
             This website aims to resolve an uncomfortable feeling I got when
-            looking for some serie's information on internet and ended up find
+            looking for some serie&apos;s information on internet and ended up find
             myself in a wiki that contain, literally, an ocean of information.
-            The first take is that it's a good thing, but for me, who was
+            The first take is that it&apos;s a good thing, but for me, who was
             justing looking for a summary or something like it, that amount of
             information only draw my attention away from my original purpose.
           </p>

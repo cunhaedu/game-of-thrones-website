@@ -1,15 +1,18 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Pagination } from 'swiper';
 import { motion } from 'framer-motion';
-import Image from 'next/future/image';
 import { GetStaticProps } from 'next';
 import { gql } from '@apollo/client';
+import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 
 import { Footer } from '../../components/Footer';
 import { Menu } from '../../components/Menu';
+
 import { client } from '../../lib/apollo';
+import { fadeInUpAnimation } from '../../animations/fadeInUp';
+import { staggerAnimation } from '../../animations/stagger';
 
 type GetHousesResponse = {
   houses: Array<{
@@ -53,7 +56,7 @@ export default function Houses({ houses }: GetHousesResponse) {
               Houses
             </h1>
 
-            <div className='max-w-full 2xl:max-w-screen-2xl 2xl:self-center overflow-x-hidden my-10'>
+            <motion.div variants={staggerAnimation(0.3)} className='max-w-full 2xl:max-w-screen-2xl 2xl:self-center overflow-x-hidden my-10'>
               <Swiper
                 modules={[Pagination, Mousewheel]}
                 pagination={{
@@ -83,30 +86,30 @@ export default function Houses({ houses }: GetHousesResponse) {
                 {houses.map(house => (
                   <SwiperSlide key={house.slug}>
                     <Link href={`houses/${house.slug}`} >
-                      <a>
-                        {
-                          <motion.div
-                            // layoutId={house.slug}
-                            initial={{ scale: 1 }}
-                            animate={{ scale: 1 }}
-                            whileHover={{ scale: 1.02 }}
-                            className='h-80 flex items-center justify-center lg:block'
-                          >
-                            <Image
-                              src={house.logo}
-                              alt={house.name}
-                              width={320}
-                              height={320}
-                              className='object-bottom m-2 lg:object-center mx-2 rounded-3xl lg:rounded-md cursor-pointer duration-200 self-center'
-                            />
-                          </motion.div>
-                        }
-                      </a>
+                      {
+                        <motion.div
+                          variants={fadeInUpAnimation}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 1 }}
+                          // initial={{ scale: 1 }}
+                          // animate={{ scale: 1 }}
+                          // whileHover={{ scale: 1.02 }}
+                          className='h-80 flex items-center justify-center lg:block'
+                        >
+                          <Image
+                            src={house.logo}
+                            alt={house.name}
+                            width={320}
+                            height={320}
+                            className='object-bottom m-2 lg:object-center mx-2 rounded-3xl lg:rounded-md cursor-pointer duration-200 self-center'
+                          />
+                        </motion.div>
+                      }
                     </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>
-            </div>
+            </motion.div>
           </div>
         </section>
 

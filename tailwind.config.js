@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -27,7 +27,8 @@ module.exports = {
         'houses': "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url('/assets/images/houses.jpg')",
       },
       fontFamily: {
-        'primary': ['GotFont', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-cinzel)', ...fontFamily.sans],
+        'primary': ['var(--font-cinzel)', ...fontFamily.sans],
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite'

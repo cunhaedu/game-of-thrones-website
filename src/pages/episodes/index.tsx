@@ -54,6 +54,7 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
     setSelectedEpisode(seasons[0].episodes[0]);
 
     changeNextAndPreviousSeasonInformation(0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handlePreviousSeason(): void {
@@ -148,14 +149,13 @@ export default function Episodes({ seasons }: GetSeasonsWithEpisodesResponse) {
               </ul>
             </section>
 
-              <Link href={`/episodes/${selectedEpisode.slug}`}>
-                <motion.a
-                  key={selectedEpisode.slug}
-                  className='py-3 px-2 mt-14 cursor-pointer text-sm border rounded-sm border-primary self-center transition-transform ease-in-out duration-500 hover:scale-105'
-                >
-                  EXPLORE EPISODE
-                </motion.a>
-              </Link>
+            <motion.div
+              whileHover={{y: -5}}
+              whileTap={{y: 0}}
+              className='py-3 px-2 mt-14 cursor-pointer text-sm border rounded-sm border-primary self-center'
+            >
+              <Link href={`/episodes/${selectedEpisode.slug}`}>EXPLORE EPISODE</Link>
+            </motion.div>
           </div>
         </div>
       </main>
@@ -181,6 +181,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       seasons: data.seasons,
     },
-    revalidate: 60 * 60 * 12, // 12 hours
   };
 };

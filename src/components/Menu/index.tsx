@@ -1,7 +1,8 @@
-import { Fragment, useState } from 'react';
-import Link from 'next/link';
-import { Dialog, Transition } from '@headlessui/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   X as CloseIcon,
   List as MenuIcon,
@@ -10,16 +11,16 @@ import {
   FlagBanner as FlagIcon,
   MapTrifold as LocationIcon,
   Books as BooksIcon,
-  Tree as ReligionIcon
-} from "phosphor-react";
+  Tree as ReligionIcon,
+} from 'phosphor-react';
 
 const menuItems = [
-  { url: '/episodes', Icon: EpisodeIcon, title: 'Episodes' },
-  { url: '/houses', Icon: FlagIcon, title: 'Houses' },
-  { url: '/people', Icon: PersonIcon, title: 'Cast' },
-  { url: '/religions', Icon: ReligionIcon, title: 'Religions' },
-  { url: '/locations', Icon: LocationIcon, title: 'Locations' },
-  { url: '/histories', Icon: BooksIcon, title: 'Histories' },
+  { url: '/episodes', Icon: EpisodeIcon, title: 'Episodes', isDisabled: false },
+  { url: '/houses', Icon: FlagIcon, title: 'Houses', isDisabled: false },
+  { url: '/people', Icon: PersonIcon, title: 'Cast', isDisabled: true },
+  { url: '/religions', Icon: ReligionIcon, title: 'Religions', isDisabled: true },
+  { url: '/locations', Icon: LocationIcon, title: 'Locations', isDisabled: true },
+  { url: '/histories', Icon: BooksIcon, title: 'Histories', isDisabled: true },
 ]
 
 export function Menu() {
@@ -82,9 +83,13 @@ export function Menu() {
                       <div className="px-4 sm:px-6">
                         <Dialog.Title className="mb-5">
                           <Link href="/">
-                            <a>
-                              <img src="/assets/images/logo-gray.svg" alt="Game of thrones" className='w-48' />
-                            </a>
+                            <Image
+                              src="/assets/images/logo-gray.svg"
+                              alt="Game of thrones"
+                              width={192}
+                              height={48}
+                              className='w-48'
+                            />
                           </Link>
                         </Dialog.Title>
                       </div>
@@ -100,10 +105,11 @@ export function Menu() {
                                 transition={{ ease: "easeInOut", duration: 0.7 }}
                                 className='list-none'
                               >
-                                <Link href={item.url}>
-                                  <a className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'>
-                                    <item.Icon className='w-6 h-6' /> {item.title}
-                                  </a>
+                                <Link
+                                  href={item.url}
+                                  className='flex align-middle justify-start gap-2 hover:text-white transition-colors ease-in-out delay-75'
+                                >
+                                  <item.Icon className='w-6 h-6' /> {item.title}
                                 </Link>
                               </motion.li>
                             ))}

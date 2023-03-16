@@ -21,18 +21,6 @@ h1 {
   font-family: 'GotFont', sans-serif;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Cinzel', sans-serif;
-}
-
-p, span, a {
-  font-family: 'Cinzel', sans-serif;
-}
-
 body {
   background-color: #000;
 }
